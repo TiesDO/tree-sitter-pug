@@ -14,6 +14,9 @@
 module.exports = grammar({
   name: "pug",
   externals: ($) => [$._newline, $._indent, $._dedent],
+	conflicts: ($) => [
+		[$.tag],
+	],
   rules: {
     source_file: ($) => repeat(
       choice(
@@ -314,6 +317,7 @@ module.exports = grammar({
         choice($.tag_name, $.id, $.class),
         optional(repeat1(choice($.id, $.class))),
         optional($.attributes),
+        optional(repeat1($.class)),
         optional(alias('/', $.self_close_slash)),
         choice(
           seq(":", $.tag),

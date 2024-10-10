@@ -54,6 +54,40 @@ some-tag(attr, other-attr="test")
       (attribute (attribute_name) (quoted_attribute_value (attribute_value))))))
 
 ========================
+Tag with classes and attributes
+========================
+
+some-tag.some-class.another-class(attr, other-attr="test")
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+		(class)
+		(class)
+    (attributes
+      (attribute (attribute_name))
+      (attribute (attribute_name) (quoted_attribute_value (attribute_value))))))
+
+========================
+Tag with and attributes and classes
+========================
+
+some-tag(attr, other-attr="test").some-class.another-class
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (attributes
+      (attribute (attribute_name))
+      (attribute (attribute_name) (quoted_attribute_value (attribute_value))))
+		(class)
+		(class)))
+
+========================
 Tag attributes with escaped quotes
 ========================
 

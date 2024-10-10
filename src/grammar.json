@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "pug",
   "rules": {
     "source_file": {
@@ -1142,6 +1143,21 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "class"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "ALIAS",
               "content": {
                 "type": "STRING",
@@ -1930,7 +1946,8 @@
     },
     "class": {
       "type": "PATTERN",
-      "value": "\\.[_a-z0-9\\-]*[_a-zA-Z][_a-zA-Z0-9\\-]*"
+      "value": "\\.[_a-z0-9\\-]*[_a-zA-Z][_a-zA-Z0-9\\-]*",
+      "flags": "i"
     },
     "id": {
       "type": "PATTERN",
@@ -2370,7 +2387,11 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "tag"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {
@@ -2389,4 +2410,3 @@
   "inline": [],
   "supertypes": []
 }
-
